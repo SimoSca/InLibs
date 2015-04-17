@@ -17,6 +17,9 @@
         "monolog/monolog" : "*",
         "raven/raven": "~0.5"
     },
+    "psr-0": {
+                "HelloWorld": "src/"
+    },
     "require-dev": {  },
     "suggest": { },
     "autoload": { },

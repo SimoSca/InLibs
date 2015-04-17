@@ -104,4 +104,7 @@ Questo vuol dire che se svolgo un cambiamento locale nella directory `InLibs`, c
 1. in `vendor/IlNullatore/InLibs/composer.json` tra i **require** aggiungo `"raven/raven": "~0.5"`
 2. da `PackageMy` lancio `composer update`: in `vendor` non cambia nulla!
 3. allora torno dentro a InLibs del punto **1** e pusho i cambiamenti in remoto
-4. ancora da `PackageMy` lancio `composer update`: in `vendor`
+4. ancora da `PackageMy` lancio `composer update`: in `vendor` trovo anche il folder `raven`
+
+Tutto questo perche', ripeto, composer i dati li pesca dal repo remoto, che e' aggiornato solamente dopo l'ultimo push!!!
+
