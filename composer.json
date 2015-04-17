@@ -15,7 +15,9 @@
         "php": ">=5.3.0",
         "psr/log": "~1.0"
     },
-    "require-dev": { },
+    "require-dev": { 
+        "monolog/monolog" : "*"
+     },
     "suggest": { },
     "autoload": { },
     "provide": { }
