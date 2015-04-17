@@ -18,7 +18,7 @@
         "raven/raven": "~0.5"
     },
     "psr-0": {
-                "HelloWorld//": "src/"
+                "HelloWorld\\": "src/"
     },
     "require-dev": {  },
     "suggest": { },
