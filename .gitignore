@@ -1,0 +1,7 @@
+# ignore Documentation
+# run via Gruntfile.js
+doc/
+
+# ignore NodeJs modules
+# run npm install to parse package.json
+node_modules/

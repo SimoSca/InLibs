@@ -1,0 +1,22 @@
+{
+    "name": "simon/InLibs",
+    "description": "Test composer",
+    "version": "dev-master",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simo Sca",
+            "email": "impetus_deep@ymail.com",
+            "homepage": "http://example.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "psr/log": "~1.0",
+    },
+    "require-dev": { },
+    "suggest": { },
+    "autoload": { },
+    "provide": { }
+}

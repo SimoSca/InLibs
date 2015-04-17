@@ -1,0 +1,11 @@
+{
+  "name": "InLibs",
+  "version": "1.0.0",
+  "description": "IlNullatore Libs examples",
+  "author": "Simone Scardoni",
+  "devDependencies": {},
+  "//": "grunt-phpdocumentor e' un fork che ha implementato l'opzione ignore",
+  "optionalDependencies": {
+    "grunt-phpdocumentor": "git://github.com/volktron/grunt-phpdocumentor"
+  }
+}
