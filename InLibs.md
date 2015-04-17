@@ -33,14 +33,16 @@ come implementare e sviluppare questo package tramite composer.
     "require": {
         "php": ">=5.3.0",
         "psr/log": "~1.0",
-        "monolog/monolog" : "*"
+        "monolog/monolog" : "*",
+        "raven/raven": "~0.5"
     },
     "require-dev": {  },
-    "autoload": {
-            "psr-4": {"HW\\": "src/HelloWorld"}
-        },
     "suggest": { },
-    "autoload": { },
+    "autoload": { 
+        "psr-0": {
+                    "HelloWorld": "src/"
+        }
+    },
     "provide": { }
 }
 ````
@@ -49,6 +51,8 @@ L'esempio di cui sopra fara' in modo di installare il package in `vendor/IlNulla
 Inoltre provvedera' a far installare le due dipendenze *monolog* e *psr*.
 
 In ultimo implementera' l'autoload specifico del mio pacchetto (*psr-4* in questo caso).
+
+*vedi https://github.com/l3pp4rd/DoctrineExtensions/blob/master/composer.json per ulteriori esempi di file*
 
 2. per convenzione dentro la root posso inserire la directory `src` che conterra' le classi e verra' impiegata per l'autoload
 
