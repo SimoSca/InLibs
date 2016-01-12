@@ -12,51 +12,50 @@ Package Composer
 ================
 come implementare e sviluppare questo package tramite composer.
 
-0. creo l'ambiente di lavoro in cui sviluppare il package, pertanto creo una directory, ad esempio `PackageMy`
+1. creo l'ambiente di lavoro in cui sviluppare il package, pertanto creo una directory, ad esempio `PackageMy`
 
-1. in `PackageMy` creo la directory del PACKAGE (chiamiamola `<root>`) in cui inseriro' il `composer.json` contenente per lo meno `name` e `version`. 
- 
-````
-{
-    "name": "IlNullatore/InLibs",
-    "description": "Test composer",
-    "version": "dev-master",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Simo Sca",
-            "email": "impetus_deep@ymail.com",
-            "homepage": "http://example.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0",
-        "psr/log": "~1.0",
-        "monolog/monolog" : "*",
-        "raven/raven": "~0.5"
-    },
-    "require-dev": {  },
-    "suggest": { },
-    "autoload": { 
-        "psr-0": {
-                    "HelloWorld": "src/"
-        }
-    },
-    "provide": { }
-}
-````
-L'esempio di cui sopra fara' in modo di installare il package in `vendor/IlNullatore/InLibs` quando il package verra' installato mediante **composer**.
+2. in `PackageMy` creo la directory del PACKAGE (chiamiamola `<root>`) in cui inseriro' il `composer.json` contenente per lo meno `name` e `version`. 
+    ````
+    {
+        "name": "IlNullatore/InLibs",
+        "description": "Test composer",
+        "version": "dev-master",
+        "type": "library",
+        "license": "MIT",
+        "authors": [
+            {
+                "name": "Simo Sca",
+                "email": "impetus_deep@ymail.com",
+                "homepage": "http://example.com"
+            }
+        ],
+        "require": {
+            "php": ">=5.3.0",
+            "psr/log": "~1.0",
+            "monolog/monolog" : "*",
+            "raven/raven": "~0.5"
+        },
+        "require-dev": {  },
+        "suggest": { },
+        "autoload": { 
+            "psr-0": {
+                        "HelloWorld": "src/"
+            }
+        },
+        "provide": { }
+    }
+    ````
+    L'esempio di cui sopra fara' in modo di installare il package in `vendor/IlNullatore/InLibs` quando il package verra' installato mediante **composer**.
+    
+    Inoltre provvedera' a far installare le due dipendenze *monolog* e *psr*.
+    
+    In ultimo implementera' l'autoload specifico del mio pacchetto (*psr-4* in questo caso).
+    
+    *vedi https://github.com/l3pp4rd/DoctrineExtensions/blob/master/composer.json per ulteriori esempi di file*
 
-Inoltre provvedera' a far installare le due dipendenze *monolog* e *psr*.
+3. per convenzione dentro la root posso inserire la directory `src` che conterra' le classi e verra' impiegata per l'autoload
 
-In ultimo implementera' l'autoload specifico del mio pacchetto (*psr-4* in questo caso).
-
-*vedi https://github.com/l3pp4rd/DoctrineExtensions/blob/master/composer.json per ulteriori esempi di file*
-
-2. per convenzione dentro la root posso inserire la directory `src` che conterra' le classi e verra' impiegata per l'autoload
-
-3. in `<root>` lancio i comandi per creare il primo commit di git, e successivamente pusharlo in github, in questo caso:
+4. in `<root>` lancio i comandi per creare il primo commit di git, e successivamente pusharlo in github, in questo caso:
 
     git init
     git add README.md
@@ -64,28 +63,26 @@ In ultimo implementera' l'autoload specifico del mio pacchetto (*psr-4* in quest
     git remote add origin https://github.com/SimoSca/InLibs.git
     git push -u origin master
 
-4. in `PackageMy` aggiungo un file `composer.json` per scaricare via composer e inserire il package in `vendor`. Dato che non sono interessato a inserire il pacchetto in **Packagist**, ovvero nei repo di composer, mi limito a scaricarlo direttamente da github. Il file composer.json di `PackageMy` e':
+5. in `PackageMy` aggiungo un file `composer.json` per scaricare via composer e inserire il package in `vendor`. Dato che non sono interessato a inserire il pacchetto in **Packagist**, ovvero nei repo di composer, mi limito a scaricarlo direttamente da github. Il file composer.json di `PackageMy` e':  
+    ````
+    {
+        "repositories": [
+            {
+                "type": "git",
+                "url": "https://github.com/SimoSca/InLibs.git"
+            }
+        ],
+        "require":
+            {
+                "ilnullatore/inlibs" : "dev-master"
+            }
+    }
+    ````
 
-````
-{
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/SimoSca/InLibs.git"
-        }
-    ],
-    "require":
-        {
-            "ilnullatore/inlibs" : "dev-master"
-        }
-}
-````
-
-5. sempre da `PackageMy` runnare
-````
-composer install
-````
-
+6. sempre da `PackageMy` runnare
+    ````
+    composer install
+    ````
 ed a questo punto dovrebbe aver caricato il pacchetto, le sue dipendenze e il relativo autoload.
 
 ### Step Successivi
@@ -111,4 +108,11 @@ Questo vuol dire che se svolgo un cambiamento locale nella directory `InLibs`, c
 4. ancora da `PackageMy` lancio `composer update`: in `vendor` trovo anche il folder `raven`
 
 Tutto questo perche', ripeto, composer i dati li pesca dal repo remoto, che e' aggiornato solamente dopo l'ultimo push!!!
+
+### Fonti
+pagina di riferimento per il psr e l'esempio:
+
+http://grossi.io/2013/creating-your-first-composer-packagist-package/
+
+
 
